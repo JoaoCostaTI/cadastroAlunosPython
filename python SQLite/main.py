@@ -29,14 +29,13 @@ class SistemaDeRegistro:
         self.c.execute("SELECT * FROM estudantes")
         dados = self.c.fetchall()
 
-        for i in dados:
-            print(f'ID:{i[0]} | Nome: {i[1]} | Email: {i[2]} | Tel: {i[3]} | Sexo: {i[4]} | Data de Nascimento: {i[5]} | Endereço: {i[6]} | Curso: {i[7]} | Imagem: {i[8]}')
+        return dados
 
     def search_student(self, id):
         self.c.execute("SELECT * FROM estudantes WHERE id = ?", (id,))
         dados = self.c.fetchone()
 
-        print(f'ID:{dados[0]} | Nome: {dados[1]} | Email: {dados[2]} | Tel: {dados[3]} | Sexo: {dados[4]} | Data de Nascimento: {dados[5]} | Endereço: {dados[6]} | Curso: {dados[7]} | Imagem: {dados[8]}')
+        return dados
 
     def update_student(self, nova_valores):
             query = "UPDATE estudantes SET nome=?, email=?, tel=?, sexo=?,data_nascimento=?, endereco=?, curso=?, picture=? WHERE id=? "
@@ -59,8 +58,9 @@ sistema_de_registro = SistemaDeRegistro()
 
 # INSERIR Informações dos Estudantes
 
-# estudante = ('Maria', 'maria.costapp@outlook.com', '31992205457', 'F', '01/08/1987', 'DR. Afonso Neves 20, BR', 'Medicina', 'imagem2.png')
-# sistema_de_registro.register_student(estudante)
+#estudante = ('Souza', 'bruno.souza87@proton.me', '31991112233', 'M', '06/12/1987', 'Rua Bela Vista 99, BR', 'Computação', 'imagem10.png')
+
+#sistema_de_registro.register_student(estudante)
 
 # Ver todos estudantes
 #todos_alunos = sistema_de_registro.view_all_students()
@@ -73,4 +73,4 @@ sistema_de_registro = SistemaDeRegistro()
 #aluno = sistema_de_registro.update_student(estudante)
 
 # Deletar um aluno
-aluno = sistema_de_registro.delete_student(2)
+#aluno = sistema_de_registro.delete_student(2)
